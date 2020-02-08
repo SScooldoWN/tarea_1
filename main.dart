@@ -152,3 +152,92 @@ class _HomePageState extends State<HomePage> {
     );
   }
 }
+
+// Pagina 2
+
+import 'dart:math';
+import 'package:flutter/material.dart';
+
+ class PageTwo extends StatefulWidget {
+  String textoRecibido;
+  TextEditingController _textController = TextEditingController();
+
+  PageTwo({Key key, this.textoRecibido}) : super(key: key);
+ 
+   @override
+   _PageTwoState createState() => _PageTwoState();
+ }
+ 
+ class _PageTwoState extends State<PageTwo> {
+   int numero = 0;
+   void _randomG (){
+     numero = Random().nextInt(999);
+     print("$numero");
+   } 
+   @override
+   Widget build(BuildContext context) {
+     return
+       Scaffold(
+         appBar: AppBar(
+          title: Text('Pagina 2'),
+        ),
+            body: Column(
+          children: <Widget>[
+            Expanded(
+              child: Text("Genere numero random", style: TextStyle(color: Colors.red,
+              fontSize: 28)),
+              ),
+              Expanded(child: Text("$numero")),
+            Expanded(child: MaterialButton(child: Text("Generar"), onPressed: () {
+               _randomG();
+               setState(() {
+                 
+               });
+            })),
+            Expanded(child: MaterialButton(child: Text("Guardar"),
+             onPressed: () => Navigator.of(context).pop("$numero"),
+             ),
+             ),
+          ],
+            ),
+       );
+   }
+ }
+
+//Pagina 3
+
+import 'package:flutter/material.dart';
+
+class PageThree extends StatefulWidget {
+  String textoRecibido1;
+  TextEditingController _textController = TextEditingController();
+
+  PageThree({Key key, String textoRecibido1}) : super(key: key);
+
+  @override
+  _PageThreeState createState() => _PageThreeState();
+}
+
+class _PageThreeState extends State<PageThree> {
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+          title: Text('Pagina 3'),
+        ),
+    body: Row(
+      children: [Expanded(
+        child: MaterialButton(child: Text("Happy"), onPressed: () =>  Navigator.of(context).pop("Happy")), 
+        ),
+        Expanded(
+        child: MaterialButton(child: Text("Sugar"), onPressed: () =>  Navigator.of(context).pop("Sugar")), 
+        ),
+        Expanded(
+        child: MaterialButton(child: Text("Life"), onPressed: () =>  Navigator.of(context).pop("Life")), 
+        ),
+      ],
+    ),
+    );
+  }
+}
